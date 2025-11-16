@@ -1,0 +1,17 @@
+ohmyzsh/ohmyzsh path:plugins/fzf
+
+# QoL plugins
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+agkozak/zsh-z
+mollifier/cd-gitroot
+supercrabtree/k
+hlissner/zsh-autopair
+
+# git helpers (needs fzf)
+wfxr/forgit
+
+# completion enhancement
+Aloxaf/fzf-tab
