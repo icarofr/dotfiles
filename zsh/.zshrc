@@ -9,6 +9,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 
 # ---- Prompt ----
+# fallback prompt until starship initializes
 PROMPT='%n@%m:%~ %# '
 
 # ---- Disable autocorrect ----
@@ -28,6 +29,8 @@ if bindkey -M menuselect >/dev/null 2>&1; then
 fi
 
 # ---- Aliases ----
+alias fetch='fastfetch'
+alias neofetch='fastfetch'
 alias ll='ls -alh'
 alias la='ls -A'
 alias l='ls -CF'
@@ -37,14 +40,19 @@ alias l='ls -CF'
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 export PATH
 
+# ---- Directory jumping ----
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
 # Antidote plugin manager
 ANTIDOTE_DIR="${ZDOTDIR:-$HOME}/.antidote"
 
 if [ -f "$ANTIDOTE_DIR/antidote.zsh" ]; then
   source "$ANTIDOTE_DIR/antidote.zsh"
 
-  BUNDLES_FILE="$HOME/.zsh_plugins.txt"
-  GENERATED="$HOME/.zsh_plugins.zsh"
+  BUNDLES_FILE="${ZDOTDIR:-$HOME}/.zsh_plugins.txt"
+  GENERATED="${ZDOTDIR:-$HOME}/.zsh_plugins.zsh"
 
   if [ -f "$BUNDLES_FILE" ]; then
     # regenerate plugins file if needed
@@ -67,7 +75,7 @@ export EDITOR=nano
 export VISUAL=nano
 
 # ---- Local overrides ----
-[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+[ -f "${ZDOTDIR:-$HOME}/.zshrc.local" ] && source "${ZDOTDIR:-$HOME}/.zshrc.local"
 
 # ---- FZF customisation ---
 export FZF_DEFAULT_OPTS="--multi --border --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
