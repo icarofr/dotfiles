@@ -1,0 +1,315 @@
+# General format
+format = """
+$username\
+$hostname\
+$container\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$shell\
+$character"""
+
+# Settings
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+style = "bold yellow"
+read_only = " "
+
+[hostname]
+ssh_only = false
+ssh_symbol = "🌐"
+trim_at = ""
+format = "[$ssh_symbol$hostname]($style) "
+
+[username]
+show_always = true
+format = "[$user]($style) " 	
+style_user = "bold purple"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold blue"
+symbol = " "
+
+[container]
+style = "bold blue"
+
+[git_status]
+style = "bold cyan"
+
+# [os.symbols]
+# Alpine = " "
+# Amazon = " "
+# Android = " "
+# Arch = " "
+# CentOS = " "
+# Debian = " "
+# DragonFly = " "
+# Emscripten = " "
+# EndeavourOS = " "
+# Fedora = " "
+# FreeBSD = " "
+# Garuda = "﯑ "
+# Gentoo = " "
+# HardenedBSD = "ﲊ "
+# Illumos = " "
+# Linux = " "
+# Macos = " "
+# Manjaro = " "
+# Mariner = " "
+# MidnightBSD = " "
+# Mint = " "
+# NetBSD = " "
+# NixOS = " "
+# OpenBSD = " "
+# openSUSE = " "
+# OracleLinux = " "
+# Pop = " "
+# Raspbian = " "
+# Redhat = " "
+# RedHatEnterprise = " "
+# Redox = " "
+# Solus = "ﴱ "
+# SUSE = " "
+# Ubuntu = " "
+# Unknown = " "
+# Windows = " "
+#
+[docker_context]
+disabled = true
+symbol = " "
+
+[package]
+disabled = true
+symbol = " "
+
+[c]
+disabled = true
+symbol = " "
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+symbol = " "
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+symbol = " "
+
+[elm]
+disabled = true
+symbol = " "
+
+[erlang]
+disabled = true
+
+[golang]
+disabled = true
+symbol = " "
+
+[haskell]
+disabled = true
+symbol = " "
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+symbol = " "
+
+[julia]
+disabled = true
+symbol = " "
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+symbol = " "
+
+[nodejs]
+disabled = true
+symbol = " "
+
+[ocaml]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = false
+format = '[(\($virtualenv\) )]($style)'
+style = "bold green"
+symbol = " "
+python_binary = 'python3'
+
+[raku]
+disabled = true
+
+[rlang]
+disabled = true
+symbol = "ﳒ "
+
+[ruby]
+disabled = true
+symbol = " "
+
+[rust]
+disabled = true
+symbol = " "
+
+[scala]
+disabled = true
+symbol = " "
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true
+
+[nix_shell]
+disabled = true
+symbol = " "
+
+[conda]
+disabled = true
+symbol = " "
+
+[cmd_duration]
+disabled = true
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+# [[fossil_branch]
+# symbol = " "
+#
+# [guix_shell]
+# symbol = " "
+#
+# [haxe]
+# symbol = "⌘ "
+#
+[hg_branch]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+# [meson]
+# symbol = "喝 "
+#
+[nim]
+symbol = " "
+
+# [pijul_channel]
+# symbol = "🪺 "
+#
+[spack]
+symbol = "🅢 "
