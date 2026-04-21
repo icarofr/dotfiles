@@ -84,14 +84,15 @@ read_only = " "
 
 [hostname]
 ssh_only = false
-ssh_symbol = "🌐"
-trim_at = ""
-format = "[$ssh_symbol$hostname]($style) "
+trim_at = "."
+format = "[@$hostname]($style) "
+style = "bold green"
 
 [username]
 show_always = true
-format = "[$user]($style) " 	
-style_user = "bold purple"
+format = "[$user]($style)"
+style_user = "bold cyan"
+style_root = "bold red"
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
