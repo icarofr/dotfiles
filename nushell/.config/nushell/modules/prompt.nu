@@ -1,6 +1,49 @@
 use std null_device
 
 do --env {
+  def short-hostname [name: string]: nothing -> string {
+    $name
+    | str trim
+    | split row "."
+    | first
+  }
+
+  def session-label []: nothing -> string {
+    let username = if ($env.USER? | is-not-empty) {
+      $env.USER | str trim
+    } else {
+      ^whoami | str trim
+    }
+
+    let hostname = do {
+      if ($env.HOSTNAME? | is-not-empty) {
+        short-hostname $env.HOSTNAME
+      } else {
+        let short = try {
+          ^hostname -s err> $null_device
+          | str trim
+        }
+
+        if ($short | is-not-empty) {
+          short-hostname $short
+        } else {
+          let full = try {
+            ^hostname err> $null_device
+            | str trim
+          }
+
+          if ($full | is-not-empty) {
+            short-hostname $full
+          } else {
+            "host"
+          }
+        }
+      }
+    }
+
+    $"(ansi light_blue_bold)($username)(ansi light_yellow_bold)@(ansi light_green_bold)($hostname)"
+  }
+
   def prompt-header [
     --left-char: string
   ]: nothing -> string {
@@ -9,16 +52,8 @@ do --env {
     let body = do {
       mut body = []
 
-      # SSH INDICATOR `user@environment`
-      if ($env.SSH_CONNECTION? | is-not-empty) {
-        let remote_label = if ($env.USER? | is-not-empty) {
-          $"($env.USER)@sdev"
-        } else {
-          "irocha@sdev"
-        }
-
-        $body ++= [ $"(ansi light_green_bold)($remote_label)" ]
-      }
+      # SESSION LABEL `user@host`
+      $body ++= [ (session-label) ]
 
       # PATH OR JJ PROJECT `~/Downloads` or `ncc -> modules`
       # Case insensitive filesystems strike again!

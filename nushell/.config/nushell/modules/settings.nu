@@ -79,7 +79,7 @@ $env.config.hooks.pre_execution = [
   {||
     commandline
     | str trim
-    | if ($in | is-not-empty) { print $"(ansi title)($in) — nu(char bel)" }
+    | if ($in | is-not-empty) { print --no-newline $"(ansi title)($in) — nu(char bel)" }
   }
 ]
 
