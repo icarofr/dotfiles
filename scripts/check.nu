@@ -24,24 +24,30 @@ def main [] {
 
   mut results = [
     (run-check "repository layout" "ok" {
-      let duplicate_tree = ("nushell" | path join "Library" "Application Support" "nushell")
-
-      if not ("nushell/.config/nushell/config.nu" | path exists) {
-        error make { msg: "missing nushell/.config/nushell/config.nu" }
+      if not (".config/nushell/config.nu" | path exists) {
+        error make { msg: "missing .config/nushell/config.nu" }
       }
 
-      if ($duplicate_tree | path exists) {
-        error make { msg: $"found duplicate Nushell tree at ($duplicate_tree)" }
+      if not (".config/fish/config.fish" | path exists) {
+        error make { msg: "missing .config/fish/config.fish" }
+      }
+
+      if not (".config/starship/starship.toml" | path exists) {
+        error make { msg: "missing .config/starship/starship.toml" }
+      }
+
+      if not (".config/zsh/.zshrc" | path exists) {
+        error make { msg: "missing .config/zsh/.zshrc" }
       }
     })
     (run-check "nushell config" "sources cleanly" {
-      source ../nushell/.config/nushell/env.nu
-      source ../nushell/.config/nushell/config.nu
+      source ../.config/nushell/env.nu
+      source ../.config/nushell/config.nu
     })
   ]
 
   if (command-exists "fish") {
-    let fish_check = (^fish --no-execute fish/.config/fish/config.fish | complete)
+    let fish_check = (^fish --no-execute .config/fish/config.fish | complete)
 
     if $fish_check.exit_code == 0 {
       $results ++= [{ label: "fish config", ok: true, detail: "syntax ok" }]
@@ -59,7 +65,7 @@ def main [] {
   }
 
   if (command-exists "zsh") {
-    let zsh_check = (^zsh -n zsh/.zshenv zsh/.zprofile zsh/.zshrc | complete)
+    let zsh_check = (^zsh -n .config/zsh/.zshenv .config/zsh/.zprofile .config/zsh/.zshrc | complete)
 
     if $zsh_check.exit_code == 0 {
       $results ++= [{ label: "zsh config", ok: true, detail: "syntax ok" }]

@@ -9,6 +9,7 @@ $env.DOCKER_HOST = $"unix:///run/user/($docker_uid)/docker.sock"
 
 do --env {
   let brew_candidates = [
+    ($env.HOME | path join ".local" "bin" "brew")
     ($env.HOME | path join ".linuxbrew" "bin" "brew")
     ($env.HOME | path join ".linuxbrew" "Homebrew" "bin" "brew")
     "/home/linuxbrew/.linuxbrew/bin/brew"
@@ -54,3 +55,6 @@ do --env {
     }
   }
 }
+
+$env.SHELL = (which nu | get path | first)
+
