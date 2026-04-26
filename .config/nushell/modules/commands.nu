@@ -16,6 +16,12 @@ def --env mcg [path: path]: nothing -> nothing {
   jj git init
 }
 
+def gforcepull []: nothing -> nothing {
+  git fetch
+  git reset --hard '@{u}'
+  git clean -fd
+}
+
 def --env "nu-complete jc" [commandline: string] {
   let stor = stor open
 

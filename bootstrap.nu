@@ -1,6 +1,7 @@
 #!/usr/bin/env nu
 
 const REPO_ROOT = path self .
+const CONFIG_ROOT = ($REPO_ROOT | path join ".config")
 
 def default-packages [] {
   [ "fish" "nushell" "starship" "zsh" ]
@@ -42,6 +43,43 @@ def run-stow [repo_root: path, target: string, packages: list<string>, adopt: bo
   print $"stowing ($packages | str join ', ') into ($target)"
   cd $repo_root
   ^stow ...$stow_args
+}
+
+def ensure-zsh-bridge [target: string, force: bool] {
+  let bridge_path = ($target | path join ".zshenv")
+  let canonical_path = ($target | path join ".config" "zsh" ".zshenv")
+
+  if not ($canonical_path | path exists) {
+    error make {
+      msg: "missing canonical zsh config"
+      help: $"expected ($canonical_path) to exist after stow"
+    }
+  }
+
+  if ($bridge_path | path exists) {
+    let bridge_type = ($bridge_path | path type)
+
+    if $bridge_type == "symlink" {
+      let bridge_target = (try { ^readlink $bridge_path | str trim } catch { "" })
+
+      if $bridge_target == $canonical_path {
+        print $"zsh bridge already exists at ($bridge_path)"
+        return
+      }
+    }
+
+    if not $force {
+      error make {
+        msg: "zsh bridge path already exists"
+        help: $"move or delete ($bridge_path), or rerun with --force-zsh-bridge"
+      }
+    }
+
+    rm --force $bridge_path
+  }
+
+  ^ln -s $canonical_path $bridge_path
+  print $"created zsh bridge: ($bridge_path) -> ($canonical_path)"
 }
 
 def ensure-macos-nushell-bridge [target: string, force: bool] {
@@ -86,14 +124,21 @@ def main [
   --adopt
   --no-restow
   --force-macos-bridge
+  --force-zsh-bridge
   ...packages: string
 ] {
   let selected_packages = if ($packages | is-empty) { default-packages } else { $packages }
   let resolved_platform = if ($platform | is-empty) { detect-platform } else { $platform | str downcase }
   let resolved_target = if ($target | is-empty) { $env.HOME } else { $target | path expand }
+  let config_target = ($resolved_target | path join ".config")
 
   ensure-command "stow"
-  run-stow (path self .) $resolved_target $selected_packages $adopt (not $no_restow)
+  mkdir $config_target
+  run-stow $CONFIG_ROOT $config_target $selected_packages $adopt (not $no_restow)
+
+  if "zsh" in $selected_packages {
+    ensure-zsh-bridge $resolved_target $force_zsh_bridge
+  }
 
   if ($resolved_platform == "macos") and ("nushell" in $selected_packages) {
     ensure-macos-nushell-bridge $resolved_target $force_macos_bridge
