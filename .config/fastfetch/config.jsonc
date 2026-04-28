@@ -1,0 +1,153 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "ubuntu",
+    "color": {
+      "1": "94",
+      "2": "96"
+    },
+    "padding": {
+      "top": 2,
+      "left": 1,
+      "right": 4
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "94"
+    }
+  },
+  "modules": [
+    // Title
+    {
+      "type": "title",
+      "format": "{#94}╭───────────── {#}{user-name-colored}"
+    },
+    // System
+    {
+      "type": "custom",
+      "format": "{#94}│ {#96}System"
+    },
+    {
+      "type": "os",
+      "key": "{#94}│  {#14}» OS",
+      "keyColor": "14"
+    },
+    {
+      "type": "kernel",
+      "key": "{#94}│  {#14}» Kernel",
+      "keyColor": "14"
+    },
+    {
+      "type": "uptime",
+      "key": "{#94}│  {#14}» Uptime",
+      "keyColor": "14"
+    },
+    {
+      "type": "packages",
+      "key": "{#94}│  {#14}» Packages",
+      "keyColor": "14",
+      "format": "{all}"
+    },
+    {
+      "type": "locale",
+      "key": "{#94}│  {#14}» Locale",
+      "keyColor": "14"
+    },
+    {
+      "type": "localip",
+      "key": "{#94}│  {#14}» Local IP",
+      "keyColor": "14"
+    },
+    {
+      "type": "custom",
+      "format": "{#94}│"
+    },
+    // Desktop
+    {
+      "type": "custom",
+      "format": "{#94}│ {#96}Desktop"
+    },
+    {
+      "type": "de",
+      "key": "{#94}│  {#11}» DE",
+      "keyColor": "11"
+    },
+    {
+      "type": "wm",
+      "key": "{#94}│  {#11}» WM",
+      "keyColor": "11"
+    },
+    {
+      "type": "wmtheme",
+      "key": "{#94}│  {#11}» Theme",
+      "keyColor": "11"
+    },
+    {
+      "type": "display",
+      "key": "{#94}│  {#11}» Resolution",
+      "keyColor": "11"
+    },
+    {
+      "type": "shell",
+      "key": "{#94}│  {#11}» Shell",
+      "keyColor": "11"
+    },
+    {
+      "type": "terminal",
+      "key": "{#94}│  {#11}» Terminal",
+      "keyColor": "11"
+    },
+    {
+      "type": "terminalfont",
+      "key": "{#94}│  {#11}» Font",
+      "keyColor": "11"
+    },
+    {
+      "type": "custom",
+      "format": "{#94}│"
+    },
+    // Hardware
+    {
+      "type": "custom",
+      "format": "{#94}│ {#96}Hardware"
+    },
+    {
+      "type": "cpu",
+      "key": "{#94}│  {#10}» CPU",
+      "keyColor": "10"
+    },
+    {
+      "type": "gpu",
+      "key": "{#94}│  {#10}» GPU",
+      "keyColor": "10"
+    },
+    {
+      "type": "memory",
+      "key": "{#94}│  {#10}» Memory",
+      "keyColor": "10"
+    },
+    {
+      "type": "disk",
+      "key": "{#94}│  {#10}» Disk",
+      "keyColor": "10",
+      "folders": "/"
+    },
+    {
+      "type": "custom",
+      "format": "{#94}│"
+    },
+    // Colors
+    {
+      "type": "colors",
+      "key": "{#94}│",
+      "symbol": "circle"
+    },
+    // Footer
+    {
+      "type": "custom",
+      "format": "{#94}╰───────────────────────────────╯"
+    }
+  ]
+}
