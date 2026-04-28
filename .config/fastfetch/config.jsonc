@@ -114,6 +114,11 @@
       "format": "{#94}│ {#96}Hardware"
     },
     {
+      "type": "board",
+      "key": "{#94}│  {#10}» Board",
+      "keyColor": "10"
+    },
+    {
       "type": "cpu",
       "key": "{#94}│  {#10}» CPU",
       "keyColor": "10"
@@ -135,6 +140,11 @@
       "folders": "/"
     },
     {
+      "type": "swap",
+      "key": "{#94}│  {#10}» Swap",
+      "keyColor": "10"
+    },
+    {
       "type": "custom",
       "format": "{#94}│"
     },
@@ -143,6 +153,16 @@
       "type": "colors",
       "key": "{#94}│",
       "symbol": "circle"
+    },
+    // Time
+    {
+      "type": "custom",
+      "format": "{#94}│ {#96}Now"
+    },
+    {
+      "type": "datetime",
+      "key": "{#94}│  {#14}» Date",
+      "keyColor": "14"
     },
     // Footer
     {
