@@ -34,15 +34,16 @@
       "type": "host",
       "key": "{#94}│  {#14}» Model",
       "keyColor": "14",
-      "format": "{2}",
+      "format": "{name} ({sku})",
       "condition": {
         "system": "macOS"
       }
     },
     {
       "type": "board",
-      "key": "{#94}│  {#14}» Board",
+      "key": "{#94}│  {#14}» Model",
       "keyColor": "14",
+      "format": "{name} ({version})",
       "condition": {
         "!system": "macOS"
       }
