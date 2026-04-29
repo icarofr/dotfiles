@@ -3,7 +3,7 @@
   "logo": {
     "source": "auto",
     "padding": {
-      "top": 3,
+      "top": 2,
       "left": 1,
       "right": 4
     }
@@ -34,7 +34,7 @@
       "type": "host",
       "key": "{#94}│  {#14}» Model",
       "keyColor": "14",
-      "format": "{name} ({sku})",
+      "format": "{name}",
       "condition": {
         "system": "macOS"
       }
