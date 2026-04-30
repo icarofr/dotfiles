@@ -73,9 +73,21 @@
       "format": "{all}"
     },
     {
+      "type": "command",
+      "key": "{#94}│  {#14}» Locale",
+      "keyColor": "14",
+      "text": "awk -F= '/^(LANG|LC_TIME)=/{gsub(/\"/,\"\",$2);gsub(/\\.UTF-8/,\"\",$2);if(!s)s=$2;else if(s!=$2)s=s\", \"$2}END{print s}' /etc/default/locale",
+      "condition": {
+        "system": "Linux"
+      }
+    },
+    {
       "type": "locale",
       "key": "{#94}│  {#14}» Locale",
-      "keyColor": "14"
+      "keyColor": "14",
+      "condition": {
+        "!system": "Linux"
+      }
     },
     {
       "type": "localip",
