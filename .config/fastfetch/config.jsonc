@@ -99,19 +99,7 @@
       "type": "datetime",
       "key": "{#94}│  {#14}» Date",
       "keyColor": "14",
-      "format": "{weekday-short}. {day-in-month} {month-name-short}. {year} {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}",
-      "condition": {
-        "system": "macOS"
-      }
-    },
-    {
-      "type": "datetime",
-      "key": "{#94}│  {#14}» Date",
-      "keyColor": "14",
-      "format": "{weekday-short} {day-in-month}.{month-name-short} {year}, {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}",
-      "condition": {
-        "!system": "macOS"
-      }
+      "format": "{weekday-short} {day-in-month}.{month-name-short} {year}, {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
     },
     {
       "type": "custom",
