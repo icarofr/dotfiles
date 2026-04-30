@@ -85,7 +85,7 @@
       "type": "command",
       "key": "{#94}│  {#14}» Locale",
       "keyColor": "14",
-      "text": "locale 2>/dev/null | awk -F= '/^(LANG|LC_TIME)=/{gsub(/\"/,\"\",$2);gsub(/\\.UTF-8/,\"\",$2);if(!s)s=$2;else if(s!=$2)s=s\", \"$2}END{print s}'",
+      "text": "defaults read -g AppleLocale 2>/dev/null | tr '_' '-'",
       "condition": {
         "!system": "Linux"
       }

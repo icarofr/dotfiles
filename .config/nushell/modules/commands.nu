@@ -104,11 +104,8 @@ def --wrapped jc [...arguments: string@"nu-complete jc"]: [any -> table, any -> 
   }
 }
 
-# Pass locale env vars so fastfetch command modules can read them
-def fetch [] {
-  LANG=$env.LANG LC_TIME=$env.LC_TIME LC_NUMERIC=$env.LC_NUMERIC fastfetch
-}
-alias neofetch = fetch
+alias fetch = fastfetch
+alias neofetch = fastfetch
 
 def --wrapped * [program: string = "", ...arguments] {
   if ($program | str contains "#") or ($program | str contains ":") {
