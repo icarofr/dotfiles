@@ -73,22 +73,9 @@
       "format": "{all}"
     },
     {
-      "type": "command",
+      "type": "locale",
       "key": "{#94}│  {#14}» Locale",
-      "keyColor": "14",
-      "text": "awk -F= '/^(LANG|LC_TIME)=/{gsub(/\"/,\"\",$2);gsub(/\\.UTF-8/,\"\",$2);if(!s)s=$2;else if(s!=$2)s=s\", \"$2}END{print s}' /etc/default/locale",
-      "condition": {
-        "system": "Linux"
-      }
-    },
-    {
-      "type": "command",
-      "key": "{#94}│  {#14}» Locale",
-      "keyColor": "14",
-      "text": "if [ -z \"$LANG\" ] || [ \"$LANG\" = \"C\" ]; then LANG=$(defaults read -g AppleLanguages 2>/dev/null | head -2 | tail -1 | tr -d ' \"\\,' | sed 's/-/_/').UTF-8; fi; locale 2>/dev/null | awk -F= '/^(LANG|LC_TIME)=/{gsub(/\"/,\"\",$2);gsub(/\\.UTF-8/,\"\",$2);if(!s)s=$2;else if(s!=$2)s=s\", \"$2}END{print s}'",
-      "condition": {
-        "!system": "Linux"
-      }
+      "keyColor": "14"
     },
     {
       "type": "localip",
