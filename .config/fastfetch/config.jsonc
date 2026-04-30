@@ -98,7 +98,8 @@
     {
       "type": "datetime",
       "key": "{#94}│  {#14}» Date",
-      "keyColor": "14"
+      "keyColor": "14",
+      "format": "{day-in-month}. {month-name-short} {year}, {hour-pretty}:{minute-pretty}"
     },
     {
       "type": "custom",
