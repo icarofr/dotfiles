@@ -56,5 +56,8 @@ do --env {
   }
 }
 
+$env.EDITOR = "nano"
+$env.VISUAL = "nano"
+
 $env.SHELL = (which nu | get path | first)
 

@@ -1,3 +1,6 @@
+set -gx EDITOR nano
+set -gx VISUAL nano
+
 if status is-interactive
     command -sq zoxide; and zoxide init fish --cmd cd | source
 end
