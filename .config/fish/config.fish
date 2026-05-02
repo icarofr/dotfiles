@@ -1,3 +1,10 @@
+# Fall back to xterm-256color if terminfo is missing (e.g. SSH into machine without Ghostty terminfo)
+if test "$TERM" = "xterm-ghostty"
+    if not infocmp "$TERM" >/dev/null 2>&1
+        set -gx TERM xterm-256color
+    end
+end
+
 set -gx EDITOR nano
 set -gx VISUAL nano
 

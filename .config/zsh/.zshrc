@@ -70,6 +70,11 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
+# ---- Term fallback ----
+if [ "$TERM" = "xterm-ghostty" ] && ! infocmp "$TERM" >/dev/null 2>&1; then
+  export TERM=xterm-256color
+fi
+
 # ---- Editor ----
 export EDITOR=nano
 export VISUAL=nano

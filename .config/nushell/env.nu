@@ -56,6 +56,13 @@ do --env {
   }
 }
 
+# Fall back to xterm-256color if terminfo is missing (e.g. SSH into machine without Ghostty terminfo)
+if ($env | get -i TERM | default "") == "xterm-ghostty" {
+  if (which infocmp | is-not-empty) and (do { infocmp $env.TERM } | complete | get exit_code) != 0 {
+    $env.TERM = "xterm-256color"
+  }
+}
+
 $env.EDITOR = "nano"
 $env.VISUAL = "nano"
 
