@@ -58,6 +58,7 @@ do --env {
 
 $env.EDITOR = "nano"
 $env.VISUAL = "nano"
+$env.PAGER = "less -RFX"
 
 $env.SHELL = (which nu | get path | first)
 

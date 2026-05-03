@@ -96,10 +96,10 @@
       "keyColor": "14"
     },
     {
-      "type": "datetime",
+      "type": "command",
       "key": "{#94}│  {#14}» Date",
       "keyColor": "14",
-      "format": "{weekday-short} {day-in-month}.{month-name-short} {year}, {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
+      "text": "date -u '+%a %d.%b %Y, %H:%M:%S UTC'"
     },
     {
       "type": "custom",

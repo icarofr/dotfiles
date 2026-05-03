@@ -1,0 +1,20 @@
+theme = "everforest_dark"
+
+[editor]
+true-color = true
+line-number = "relative"
+rulers = [100]
+end-of-line-diagnostics = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-inlay-hints = false
+display-signature-help-docs = false
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.file-picker]
+hidden = false

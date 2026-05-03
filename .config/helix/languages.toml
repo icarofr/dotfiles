@@ -1,0 +1,93 @@
+[language-server.typos]
+command = "typos-lsp"
+
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["typos", "rust-analyzer"]
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+imports.granularity.group = "module"
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["format", "-"] }
+language-servers = ["typos", "taplo"]
+
+[[language]]
+name = "go"
+auto-format = true
+language-servers = ["typos", "gopls", "golangci-lint-lsp"]
+
+[[language]]
+name = "dockerfile"
+auto-format = true
+language-servers = ["typos", "docker-langserver"]
+
+[language-server.docker-langserver]
+command = "docker-language-server"
+
+[[language]]
+name = "docker-compose"
+auto-format = true
+language-servers = ["typos", "docker-compose-langserver"]
+
+[[language]]
+name = "protobuf"
+auto-format = true
+language-servers = ["typos", "buf", "pbkit"]
+
+[language-server.buf]
+command = "buf"
+args = ["beta", "lsp", "--timeout=0", "--log-format=text"]
+
+[[language]]
+name = "gdscript"
+auto-format = true
+language-servers = ["typos", "godot"]
+
+[language-server.godot]
+command = "nc"
+args = ["127.0.0.1", "6005"]
+
+[[language]]
+name = "swift"
+language-servers = ["typos", "sourcekit-lsp"]
+
+[[language]]
+name = "ruby"
+language-servers = ["typos", "solargraph"]
+
+[[language]]
+name = "yaml"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+language-servers = ["typos", "yaml-language-server", "ansible-language-server"]
+
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+language-servers = ["typos", "vscode-html-language-server", "superhtml"]
+
+[[language]]
+name = "css"
+auto-format = true
+language-servers = ["typos", "vscode-css-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+
+[[language]]
+name = "scss"
+auto-format = true
+language-servers = ["typos", "vscode-css-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "scss"] }
+
+[[language]]
+name = "python"
+language-servers = ["typos", "pyright", "ruff"]
+
+[language-server.ruff]
+command = "ruff-lsp"
+config = { settings = { args = ["--ignore", "E501"] } }
