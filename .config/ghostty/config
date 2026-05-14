@@ -1,4 +1,6 @@
-command = /opt/homebrew/bin/nu
+# Launch nushell — wrapper strips trailing-slashed PWD that nushell rejects
+command = /Users/user/bin/nu-pwd-fix
+
 font-size = 12
 font-family = CommitMono Nerd Font
 
