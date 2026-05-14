@@ -1,6 +1,9 @@
 # Launch nushell — wrapper strips trailing-slashed PWD that nushell rejects
 command = /Users/user/bin/nu-pwd-fix
 
+# xterm-256color is available system-wide (no sudo terminfo issues)
+term = xterm-256color
+
 font-size = 12
 font-family = CommitMono Nerd Font
 
