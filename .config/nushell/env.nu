@@ -34,6 +34,8 @@ do --env {
     }
   }
 
+  path add ($env.HOME | path join "bin")
+
   let mise_shims = ($env.HOME | path join ".local" "share" "mise" "shims")
   if ($mise_shims | path exists) {
     path add $mise_shims

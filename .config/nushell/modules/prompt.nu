@@ -65,7 +65,7 @@ do --env {
     }
   }
 
-  def workspace-root []: nothing -> string {
+  def workspace-root []: nothing -> oneof<string, nothing> {
     let jj_workspace_root = try {
       jj workspace root err> $null_device | str trim
     }
@@ -160,7 +160,7 @@ do --env {
     }
   }
 
-  def git-ref [branch_hint: string = ""]: nothing -> string {
+  def git-ref [branch_hint: string = ""]: nothing -> oneof<string, nothing> {
     let branch = if ($branch_hint | is-not-empty) {
       $branch_hint
     } else {
@@ -247,7 +247,7 @@ do --env {
     let cwd = (pwd | path expand)
     let code = ($env.LAST_EXIT_CODE? | default 0)
     let command_duration = (($env.CMD_DURATION_MS? | default 0 | into int) * 1ms)
-    let root = (workspace-root)
+    let root = (workspace-root) | default ""
     let git_info = (git-operation)
 
     mut parts = [
